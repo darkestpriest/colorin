@@ -1,2 +1,2 @@
 # colorin
-An colored app for my daughter
+A colored app for my daughter
