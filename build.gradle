@@ -1,0 +1,25 @@
+group 'org.darkestapp'
+version '0.1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'application'
+
+mainClassName = "org.darkestapp.colorin.Main"
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+defaultTasks = ['clean', 'check', 'jar']
+
+dependencies {
+    sourceSets.main.resources.srcDirs = ["src/main/resources/"]
+}
+
+jar {
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    manifest { attributes 'Main-Class': 'org.darkestapp.colorin.Main' }
+    baseName 'colorin'
+}

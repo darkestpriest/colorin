@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Label?>
+<?import java.net.URL?>
+
+<!--Created by Manuel Perez on 25/10/2016-->
+
+<HBox fx:controller="org.darkestapp.colorin.structure.controllers.MainTopController" xmlns:fx="http://javafx.com/fxml" prefHeight="28" prefWidth="470">
+    <Label fx:id="mainLabel" text="Colorin" prefHeight="28" prefWidth="470" wrapText="true" alignment="CENTER_LEFT"/>
+    <stylesheets>
+        <URL value="@/css/Main.css" />
+    </stylesheets>
+</HBox>

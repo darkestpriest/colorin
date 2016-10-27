@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Label?>
+<?import java.net.URL?>
+
+<!--Created by Manuel Perez on 26/10/2016-->
+
+<HBox fx:id="mainBottom" fx:controller="org.darkestapp.colorin.structure.controllers.MainBottomController" xmlns:fx="http://javafx.com/fxml" prefHeight="28" prefWidth="470">
+    <Label fx:id="statusLabel" text="Default Status" prefHeight="28" prefWidth="416" wrapText="true" alignment="CENTER_LEFT"/>
+    <stylesheets>
+        <URL value="@/css/Main.css" />
+    </stylesheets>
+</HBox>
