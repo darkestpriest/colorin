@@ -13,9 +13,9 @@
     <padding>
         <Insets top="10" right="10" bottom="10" left="10"/>
     </padding>
-    <ScrollPane fx:id="drawPane" prefHeight="200.0" prefWidth="200.0">
+    <ScrollPane fx:id="drawPane" prefHeight="210.0" prefWidth="210.0">
         <content>
-            <Canvas fx:id="canvas" height="286.0" width="355.0" onMouseDragged="#handleMousePressed" />
+            <Canvas fx:id="canvas" height="200.0" width="200.0" onMouseDragged="#handleMousePressed" />
         </content>
     </ScrollPane>
 

@@ -81,4 +81,17 @@ public class ColorinLogger {
         logger.warning(message);
     }
 
+    /**
+     * Creates a default ColorinLogger.
+     * @return
+     */
+    public static ColorinLogger getColorinLogger(){
+        try {
+            return new ColorinLogger(COLORIN_LOG);
+        } catch (ColorinLoggerException e) {
+            return new ColorinLogger();
+        }
+
+    }
+
 }

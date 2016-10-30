@@ -4,8 +4,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
-import org.darkestapp.colorin.structure.exceptions.ColorinLoggerException;
 import org.darkestapp.colorin.structure.utils.ColorinLogger;
 import org.darkestapp.colorin.structure.utils.Point;
 
@@ -33,6 +33,14 @@ public class DrawAreaController implements Initializable {
     private GraphicsContext graphicsContext;
     private ColorinLogger logger;
 
+    private static final String LOGGER_FILE = "ColorinDAC.log";
+    private static double CANVAS_WIDTH;
+    private static double CANVAS_HEIGHT;
+    private static final double CANVAS_MIN = 0;
+    //This values is hardoced in this version
+    private static double X_CIRCLE_SIZE = 10;
+    private static double Y_CIRCLE_SIZE = 10;
+
     /**
      * This method initializes the canvas and the graphic object in the DrawArea.
      * @param location
@@ -41,12 +49,9 @@ public class DrawAreaController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         graphicsContext = canvas.getGraphicsContext2D();
-        try{
-            logger = new ColorinLogger("ColorinDAC.log");
-        } catch (ColorinLoggerException e){
-            e.printStackTrace();
-            logger = new ColorinLogger();
-        }
+        CANVAS_HEIGHT = canvas.getHeight();
+        CANVAS_WIDTH = canvas.getWidth();
+        logger = ColorinLogger.getColorinLogger();
 
     }
 
@@ -56,8 +61,24 @@ public class DrawAreaController implements Initializable {
      * This method handles the MouseEvent on canvas described in {@link fxml.DrawArea}
      */
     private void handleMousePressed(MouseEvent mouseEvent) {
-        System.out.println(mouseEvent);
-        //TODO: improve the event to avoid drag over another object
+        drawPoint(mouseEvent);
+    }
+
+    private void drawPoint(MouseEvent mouseEvent){
+        //We only need to proceed if the Primary button is pressed
+        if(!mouseEvent.getButton().equals(MouseButton.PRIMARY)) {
+            return;
+        }
+        Point mouseCoordinates = getEventPoint(mouseEvent);
+        if(!checkPoint(mouseCoordinates)){
+            return;
+        }
+        graphicsContext.fillOval(
+                mouseCoordinates.getX(),
+                mouseCoordinates.getY(),
+                X_CIRCLE_SIZE,
+                Y_CIRCLE_SIZE);
+
     }
 
     /**
@@ -66,8 +87,29 @@ public class DrawAreaController implements Initializable {
      * @param mouseEvent
      * @return
      */
-    private Point getEventPoint(MouseEvent mouseEvent){
+    private Point getEventPoint(MouseEvent mouseEvent) {
         return new Point(mouseEvent.getX(), mouseEvent.getY());
+    }
+
+    /**
+     * This method checks if a coordinate is in the limits allowed by the canvas.
+     * @param coordinate
+     * @param maxReference
+     * @return
+     */
+    private boolean checkCoordinate(double coordinate, double maxReference) {
+        return coordinate >= CANVAS_MIN && coordinate <= maxReference;
+    }
+
+    /**
+     * This method checks if a point is in the allowed limits.
+     * @param point
+     * @return
+     */
+    private boolean checkPoint(Point point) {
+        boolean isXAllowed = checkCoordinate(point.getX(), CANVAS_WIDTH);
+        boolean isYAllowed = checkCoordinate(point.getY(), CANVAS_HEIGHT);
+        return isXAllowed && isYAllowed;
     }
 
 }
