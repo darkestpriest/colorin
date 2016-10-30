@@ -16,7 +16,7 @@
     <top>
         <fx:include fx:id="mainTop" source="MainTop.fxml"/>
     </top>
-    <!--Main Tab Pane-->
+    <!--Main Draw Area-->
     <center>
         <fx:include fx:id="drawArea" source="DrawArea.fxml"/>
     </center>
@@ -24,4 +24,8 @@
     <bottom>
         <fx:include fx:id="mainBottom" source="MainBottom.fxml" />
     </bottom>
+    <!--Main Left-->
+    <left>
+        <fx:include fx:id="mainLeft" source="MainLeft.fxml" />
+    </left>
 </BorderPane>

@@ -6,10 +6,17 @@
 <!--Created by Manuel Perez on 26/10/2016-->
 
 
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.canvas.Canvas?>
 <GridPane fx:id="drawArea" fx:controller="org.darkestapp.colorin.structure.controllers.DrawAreaController" xmlns:fx="http://javafx.com/fxml" styleClass="root">
 
     <padding>
         <Insets top="10" right="10" bottom="10" left="10"/>
     </padding>
+    <ScrollPane fx:id="drawPane" prefHeight="200.0" prefWidth="200.0">
+        <content>
+            <Canvas fx:id="canvas" height="286.0" width="355.0" onMouseDragged="#handleMousePressed" />
+        </content>
+    </ScrollPane>
 
 </GridPane>

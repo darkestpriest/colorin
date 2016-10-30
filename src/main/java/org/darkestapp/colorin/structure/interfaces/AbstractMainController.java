@@ -1,4 +1,4 @@
-package org.darkestapp.colorin.structure.controllers;
+package org.darkestapp.colorin.structure.interfaces;
 
 import javafx.fxml.Initializable;
 

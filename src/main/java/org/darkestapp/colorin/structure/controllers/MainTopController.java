@@ -1,5 +1,7 @@
 package org.darkestapp.colorin.structure.controllers;
 
+import org.darkestapp.colorin.structure.interfaces.AbstractMainController;
+
 /**
  * This is the basic controller for the MainTop component
  * Created by Manuel Perez P. (darkpriestrelative@gmail.com) on 26/10/16.
